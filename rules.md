@@ -1,6 +1,6 @@
-# Senjutsu
+# cardgame
 
-Senjutsu is intended to be a game similar to Yu-Gi-Oh. Why not just play
+cardgame is intended to be a game similar to Yu-Gi-Oh. Why not just play
 Yu-Gi-Oh then? Well, Konami has fucked up balancing the game and kept adding
 more and more stuff. They've probably done this in order to keep the game
 moving and therefore keep the game interesting. In my opinion, the difference
