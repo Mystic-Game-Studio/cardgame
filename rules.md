@@ -14,7 +14,7 @@ mechanics.
 ### Exceptions
 
 Certain cards may allow working around certain rules. The description of each
-card always wins over the general rule declerations.
+card always wins over the general rule declarations.
 
 ### The deck
 
