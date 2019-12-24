@@ -44,8 +44,9 @@ your deck. If your deck is empty, skip to the next phase.
 #### Preperation
 
 The play phase is where you can decide to lay down cards. You can lay down
-as many utility cards as you please you can also change the position of
-creatures. The position of a creature can't be changed twice in the same turn.
+as many utility cards as you please. You can also change as many creatures
+as you want from face-down position into face-up position. The position of
+a creature can't be changed twice in the same turn.
 
 #### Fighting
 
