@@ -110,21 +110,21 @@ characteristics only allowing them to be played in a certain way.
 #### Creatures
 
 Creatures are the ones doing the fighting. They can be used to attack or to
-defend your lifepoints. Each creature defines it's on cost. You can spawn one
-creature per turn. Each creature can be summoned either in attack position or
-defense position. When summoning a creature in defensive position, it will be
-placed face down.
+defend your lifepoints. Each creature defines it's mana cost. You can spawn as
+many creatures per turn as you mana pool allows. A creature can either be
+placed in face-up or face-down position. A creature can only attack if it is
+in face-up position. A creature can't attack in the same turn that you flipped
+it into face-up position or placed it. If there's at least one creature on your
+field, your enemy can't attack your lifepoints. If a face-down creature is
+attacked, then you have to flip it.
 
-A creature has attack (ATK) and defense (DEF) values. If the creature is in
-attack position, the ATK will be used, otherwise the DEF will be used. A
-creature can only attack if it is in attack position. If two creatures in
-attack position fight eachother, the winning creature will deal the difference
-in ATK as damage to the players lifepoints and destroy the weaker creature.
-If the losing creature was in defensive position, no damage will be dealt to
-the losing player. If two creatures with an equal strength fight each other,
-no damage will be dealt and no creature will be sent to the graveyard. If the
-attacking creature attacks a stronger creature that is in defensive position,
-the player takes the difference in strength as damage.
+A creature only has one stat, called `Power`. Power is it's attack strength,
+defense strength and lifepoints at once. If two creatures fight, both will
+lose power in the amount of the enemy creatures power. If the power drops to
+0, the creatures die.
+
+If a creature directly attacks the player, it will not lose any power. Only
+the player will receive damage.
 
 Each creature card can belong into groups. Such a group may for example be one
 of the following:
@@ -142,16 +142,15 @@ only affect cards of certain groups.
 Each creature card has an effect. Each effect can be used once per round, unless
 specified otherwise. Effects can be used directly after a creature has been
 placed. In order to be able to activate an effect, the creature has to be in
-face-up position, no matter whether that's attack or defense position.
+face-up position.
 
-Equipment cards get destroyed if a creature is moved back to face-down defense
+Equipment cards get destroyed if a creature is moved back into face-down
 position.
 
 All creatures have to be put into the creature card zone. The creature card zone
 has 5 slots. Creatures can't attack in the turn they've been placed in.
 
-ATK and DEF values are always multiples of 5. Therefore 5 is the minimum
-possible damage.
+The power of a creature is always a multiple of 10.
 
 #### Traps
 
