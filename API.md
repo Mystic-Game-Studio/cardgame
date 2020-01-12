@@ -16,13 +16,23 @@ The basic format is the following:
 ```json
 {
     "type": "name",
-    "payload": {
+    "data": {
         ...
     }
 }
 ```
 
 Allowing both sides to unwrap the message correctly according to the type.
+
+# New approach
+
+Cards will not be sent via the API, instead the client knows all cards
+upfront. Therefore an update means, that the server will get the new cards
+which it then tells the client about. The client will then update it's
+card-cache.
+
+Custom cards would have to be transmitted at the start of the game.
+This should use caching in order to avoid long start-times and high datausage.
 
 ## Gameplay
 
@@ -46,13 +56,14 @@ There'll be different types of actions:
         "expected_card_id": "UNIQUE_ID",
         "handslot": 1,
         "sorceslot": 4,
-        "open": false
+        "face-down": false
     }
 }    
 ```
 
 The zone will be deferred by the card-type. Depending on whether the card
-is a creature or not, the `open` paremter might be invalid and will be ignored.
+is a creature or not, the `face-down` paremter might be invalid and will be
+ignored.
 
 *flip creature open*
 
@@ -79,7 +90,24 @@ is a creature or not, the `open` paremter might be invalid and will be ignored.
 }
 ```
 
+*activate targetable effect*
+
+```json
+{
+    "type": "activate_target_effect",
+    "data": {
+        "expected_card_id": "UNIQUE_ID",
+        "sourcezone": "creatures",
+        "sourceslot": 4,
+        "targets:": [
+            ...
+        ]
+    }
+}
+```
+
 *attack*
+
 ```json
 {
     "type": "attack",
@@ -92,26 +120,7 @@ is a creature or not, the `open` paremter might be invalid and will be ignored.
 }
 ```
 
-*activate targetable effect*
-
-```json
-{
-    "type": "activate_effect",
-    "data": {
-        "expected_card_id": "UNIQUE_ID",
-        "sourcezone": "creatures",
-        "sourceslot": 4,
-        "targets:": [
-            ...
-        ]
-    }
-}
-```
-
 Targets can be players, slots, hand-cards, the deck or the graveyard.
-
-
-
 
 ## Cards
 
@@ -204,6 +213,9 @@ A deck is basically nothing but an array of cards.
     "UNIQUE_ID-3",
 ]
 ```
+
+Clients will always receive the deck in random order. This is to prevent
+cheating.
 
 Duplicates are valid, since a card can be in a deck multiple times.
 At the start of each duel, the players will have to submit their decks.
